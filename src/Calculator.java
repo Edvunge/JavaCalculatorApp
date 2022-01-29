@@ -35,7 +35,7 @@ public class Calculator implements ActionListener {
         subButton = new JButton("-");
         mulButton = new JButton("*");
         divButton = new JButton("/");
-        decButton = new JButton("+.");
+        decButton = new JButton(".");
         equButton = new JButton("=");
         delButton = new JButton("Delete");
         clrButton = new JButton("Clear");
@@ -67,6 +67,29 @@ public class Calculator implements ActionListener {
         delButton.setBounds(50,430,145,50);
         clrButton.setBounds(205,430,145,50);
 
+        panel = new JPanel();
+        panel.setBounds(50, 100, 300, 300);
+        panel.setLayout(new GridLayout(4,4,10,10));
+
+        panel.add(numberButtons[1]);
+        panel.add(numberButtons[2]);
+        panel.add(numberButtons[3]);
+        panel.add(addButton);
+        panel.add(numberButtons[4]);
+        panel.add(numberButtons[5]);
+        panel.add(numberButtons[6]);
+        panel.add(subButton);
+        panel.add(numberButtons[7]);
+        panel.add(numberButtons[8]);
+        panel.add(numberButtons[9]);
+        panel.add(mulButton);
+        panel.add(decButton);
+        panel.add(numberButtons[0]);
+        panel.add(equButton);
+        panel.add(divButton);
+
+
+        frame.add(panel);
         frame.add(delButton);
         frame.add(clrButton);
         frame.add(textField);
@@ -79,5 +102,10 @@ public class Calculator implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        for(int i=0;i<10;i++) {
+            if(e.getSource() == numberButtons[i]) {
+                textField.setText(textField.getText().concat(String.valueOf(i)));
+            }
+        }
     }
 }
